@@ -118,11 +118,11 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
         break;
       case "download":
         if (!call.hasArgument("url")) {
-          result.error("1", "url必传", "");
+          result.error("1", "url is empty", "");
           return;
         }
         if (!call.hasArgument("name")) {
-          result.error("1", "name必传", "");
+          result.error("1", "name is empty", "");
           return;
         }
         showNotification = M3U8DownloadConfig.isShowNotification();
@@ -281,7 +281,7 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
         NotificationCompat.Builder builder = NotificationUtil.getInstance().getBuilder();
         if (builder == null) return;
 
-        builder.setContentText("正在转成MP4")
+        builder.setContentText("Converting to MP4")
                 .setProgress(100, 100, true)
                 .setOngoing(true)
                 .setSmallIcon(android.R.drawable.stat_sys_download);
