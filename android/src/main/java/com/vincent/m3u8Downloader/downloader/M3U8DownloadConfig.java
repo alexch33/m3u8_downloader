@@ -20,6 +20,12 @@ public class M3U8DownloadConfig {
     private static final String TAG_DEBUG = "TAG_DEBUG_M3U8";
     private static final String TAG_SHOW_NOTIFICATION = "TAG_SHOW_NOTIFICATION_M3U8";
     private static final String TAG_CONVERT_MP4 = "TAG_CONVERT_MP4";
+    private static final String TAG_PREPARE_TEXT = "TAG_PREPARE_TEXT";
+    private static final String TAG_PENDING_TEXT = "TAG_PENDING_TEXT";
+    private static final String TAG_DOWNLOADING_TEXT = "TAG_DOWNLOADING_TEXT";
+    private static final String TAG_PAUSE_TEXT = "TAG_PAUSE_TEXT";
+    private static final String TAG_SUCCESS_TEXT = "TAG_SUCCESS_TEXT";
+    private static final String TAG_FAILED_TEXT = "TAG_FAILED_TEXT";
 
     public static M3U8DownloadConfig build(Context context){
         SpHelper.init(context);
@@ -88,6 +94,60 @@ public class M3U8DownloadConfig {
         SpHelper.putBoolean(TAG_CONVERT_MP4, convertMp4);
         return this;
     }
+
+    public M3U8DownloadConfig setPrepareText(String prepareText){
+        SpHelper.putString(TAG_PREPARE_TEXT, prepareText);
+        return this;
+    }
+
+    public static String getPrepareText() {
+        return SpHelper.getString(TAG_PREPARE_TEXT, "Preparing...");
+    }
+    public M3U8DownloadConfig setPendingText(String pendingText){
+        SpHelper.putString(TAG_PENDING_TEXT, pendingText);
+        return this;
+    }
+
+    public static String getPendingText() {
+        return SpHelper.getString(TAG_PENDING_TEXT, "Pending...");
+    }
+
+    public M3U8DownloadConfig setDownloadingText(String downloadingText){
+        SpHelper.putString(TAG_DOWNLOADING_TEXT, downloadingText);
+        return this;
+    }
+
+    public static String getDownloadingText() {
+        return SpHelper.getString(TAG_DOWNLOADING_TEXT, "Downloading...");
+    }
+
+    public M3U8DownloadConfig setPauseText(String pauseText){
+        SpHelper.putString(TAG_PAUSE_TEXT, pauseText);
+        return this;
+    }
+
+    public static String getPauseText() {
+        return SpHelper.getString(TAG_PAUSE_TEXT, "Pause");
+    }
+
+    public M3U8DownloadConfig setSuccessText(String successText){
+        SpHelper.putString(TAG_SUCCESS_TEXT, successText);
+        return this;
+    }
+
+    public static String getSuccessText() {
+        return SpHelper.getString(TAG_SUCCESS_TEXT, "Success");
+    }
+
+    public M3U8DownloadConfig setFailedText(String failedText){
+        SpHelper.putString(TAG_FAILED_TEXT, failedText);
+        return this;
+    }
+
+    public static String getFailedText() {
+        return SpHelper.getString(TAG_FAILED_TEXT, "Failed");
+    }
+
 
     public static boolean isConvertMp4(){
         return SpHelper.getBoolean(TAG_CONVERT_MP4, false);

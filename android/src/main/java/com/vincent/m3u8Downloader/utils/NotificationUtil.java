@@ -11,6 +11,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 import com.vincent.m3u8Downloader.bean.M3U8TaskState;
+import com.vincent.m3u8Downloader.downloader.M3U8DownloadConfig;
 
 /**
  * @Author: Vincent
@@ -78,16 +79,16 @@ public class NotificationUtil {
     public void updateNotification(String fileName, M3U8TaskState state, int progress) {
         if (builder == null) return;
 
-        builder.setContentTitle(fileName == null || fileName.equals("") ? "下载M3U8文件" : fileName);
+        builder.setContentTitle(fileName == null || fileName.equals("") ? "Download the M3U8 file" : fileName);
         switch (state) {
             case PREPARE:
                 notificationProgress = -100;
-                builder.setContentText("准备下载").setProgress(0, 0, true);
+                builder.setContentText(M3U8DownloadConfig.getPrepareText()).setProgress(0, 0, true);
                 builder.setOngoing(true)
                         .setSmallIcon(android.R.drawable.stat_sys_download_done);
             case PENDING:
                 notificationProgress = -100;
-                builder.setContentText("等待下载...").setProgress(0, 0, true);
+                builder.setContentText(M3U8DownloadConfig.getPendingText()).setProgress(0, 0, true);
                 builder.setOngoing(true)
                         .setSmallIcon(android.R.drawable.stat_sys_download_done);
                 break;
@@ -97,13 +98,13 @@ public class NotificationUtil {
                     return;
                 }
                 notificationProgress = progress;
-                builder.setContentText("正在下载...")
+                builder.setContentText(M3U8DownloadConfig.getDownloadingText())
                         .setProgress(100, progress, false);
                 builder.setOngoing(true)
                         .setSmallIcon(android.R.drawable.stat_sys_download);
                 break;
             case PAUSE:
-                builder.setContentText("暂停下载");
+                builder.setContentText(M3U8DownloadConfig.getPauseText());
                 builder.setOngoing(false)
                         .setSmallIcon(android.R.drawable.stat_sys_download);
                 break;
@@ -114,13 +115,13 @@ public class NotificationUtil {
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.setContentIntent(pendingIntent);
 
-                builder.setContentText("下载完成").setProgress(0, 0, false);
+                builder.setContentText(M3U8DownloadConfig.getSuccessText()).setProgress(0, 0, false);
                 builder.setOngoing(false)
                         .setSmallIcon(android.R.drawable.stat_sys_download_done);
                 break;
             case ERROR:
             case ENOSPC:
-                builder.setContentText("下载失败").setProgress(0, 0, false);
+                builder.setContentText(M3U8DownloadConfig.getFailedText()).setProgress(0, 0, false);
                 builder.setOngoing(false)
                         .setSmallIcon(android.R.drawable.stat_sys_download_done);
                 break;

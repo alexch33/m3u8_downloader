@@ -68,6 +68,12 @@ class M3u8Downloader {
     int? readTimeout,
     int? threadCount,
     bool? debugMode,
+    String? prepareText,
+    String? pendingText,
+    String? downloadingText,
+    String? pauseText,
+    String? successText,
+    String? failedText,
   }) async {
     final bool? r = await _channel.invokeMethod<bool>('config',{
       "saveDir": saveDir,
@@ -77,6 +83,12 @@ class M3u8Downloader {
       "readTimeout": readTimeout,
       "threadCount": threadCount,
       "debugMode": debugMode,
+      "prepareText": prepareText,
+      "pendingText": pendingText,
+      "downloadingText": downloadingText,
+      "pauseText": pauseText,
+      "successText": successText,
+      "failedText": failedText
     });
     return r ?? false;
   }

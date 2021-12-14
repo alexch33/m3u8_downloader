@@ -45,7 +45,13 @@ class _MyAppState extends State<MyApp> {
       saveDir: saveDir,
       threadCount: 5,
       convertMp4: true,
-      debugMode: true
+      debugMode: true,
+      prepareText: "Preparing",
+      pendingText: "Pending",
+      downloadingText: "Downloading",
+      pauseText: "Pause",
+      successText: "Success",
+      failedText: "Failed"
     );
     // 注册监听器
     IsolateNameServer.registerPortWithName(_port.sendPort, 'downloader_send_port');

@@ -114,6 +114,37 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
           boolean convertMp4 = call.argument("convertMp4");
           config.setConvertMp4(convertMp4);
         }
+
+        if (call.hasArgument("prepareText") && call.argument("prepareText") != JSONObject.NULL) {
+          String prepareText = call.argument("prepareText");
+          config.setPrepareText(prepareText);
+        }
+
+        if (call.hasArgument("pendingText") && call.argument("pendingText") != JSONObject.NULL) {
+          String pendingText = call.argument("pendingText");
+          config.setPendingText(pendingText);
+        }
+
+        if (call.hasArgument("downloadingText") && call.argument("downloadingText") != JSONObject.NULL) {
+          String downloadingText = call.argument("downloadingText");
+          config.setDownloadingText(downloadingText);
+        }
+
+        if (call.hasArgument("pauseText") && call.argument("pauseText") != JSONObject.NULL) {
+          String pauseText = call.argument("pauseText");
+          config.setPauseText(pauseText);
+        }
+
+        if (call.hasArgument("successText") && call.argument("successText") != JSONObject.NULL) {
+          String successText = call.argument("successText");
+          config.setSuccessText(successText);
+        }
+
+        if (call.hasArgument("failedText") && call.argument("failedText") != JSONObject.NULL) {
+          String failedText = call.argument("failedText");
+          config.setFailedText(failedText);
+        }
+
         result.success(true);
         break;
       case "download":
