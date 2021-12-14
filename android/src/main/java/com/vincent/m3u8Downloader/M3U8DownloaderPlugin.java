@@ -254,6 +254,7 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
       args.put("url", task.getUrl());
       args.put("dir", saveDir);
       args.put("filePath", filePath);
+      args.put("totalSize", task.getTotalSize());
 
       //下载成功
       if (successCallbackHandle != -1) {
