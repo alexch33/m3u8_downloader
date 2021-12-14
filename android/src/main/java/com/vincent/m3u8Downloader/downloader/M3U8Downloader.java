@@ -182,6 +182,14 @@ public class M3U8Downloader {
                 downloadProgress = 1.0f * curTs / totalTs;
             }
             if (onM3U8DownloadListener != null){
+                if (!currentM3U8Task.isApproxSet()) {
+                    currentM3U8Task.setMeanChunkSize(currentM3U8Task.getTotalChunksSize() + itemFileSize);
+                    currentM3U8Task.setCounter(currentM3U8Task.getChunksCount() + 1);
+                    if (currentM3U8Task.getChunksCount() == 10) {
+                        currentM3U8Task.setApproxSet(true);
+                        currentM3U8Task.setApproxTotalSize((currentM3U8Task.getTotalChunksSize() / currentM3U8Task.getChunksCount()) * totalTs);
+                    }
+                }
                 onM3U8DownloadListener.onDownloadItem(currentM3U8Task, itemFileSize, totalTs, curTs);
             }
         }

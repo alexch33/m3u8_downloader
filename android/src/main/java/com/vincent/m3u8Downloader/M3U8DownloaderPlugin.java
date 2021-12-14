@@ -142,7 +142,7 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
         break;
       case "pause":
         if (!call.hasArgument("url")) {
-          result.error("1", "url必传", "");
+          result.error("1", "url is empty", "");
           return;
         }
         String pauseUrl = call.argument("url");
@@ -152,7 +152,7 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
         break;
       case "delete":
         if (!call.hasArgument("url")) {
-          result.error("1", "url必传", "");
+          result.error("1", "url is empty", "");
           return;
         }
         final String deleteUrl = call.argument("url");
@@ -169,7 +169,7 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
         break;
       case "getSavePath":
         if (!call.hasArgument("url")) {
-          result.error("1", "url必传", "");
+          result.error("1", "url is empty", "");
           return;
         }
         String saveUrl = call.argument("url");
@@ -220,6 +220,7 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
         args.put("totalSize", task.getTotalSize());
         args.put("currentFormatSize", task.getFormatCurrentSize());
         args.put("totalFormatSize", task.getFormatTotalSize());
+        args.put("approxTotalSize", task.getApproxTotalSize());
         handler.post(new Runnable() {
           @Override
           public void run() {

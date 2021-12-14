@@ -14,11 +14,23 @@ public class M3U8Task {
     private long speed;
     private float progress;
     private M3U8 m3U8;
+    private long approxTotalSize = 0;
+    private long meanChunkSize = 1;
+    private boolean isApproxSet = false;
+    private int counter = 1;
 
     private M3U8Task() {}
 
     public M3U8Task(String url){
         this.url = url;
+    }
+
+    public long getApproxTotalSize() {
+        return  this.approxTotalSize;
+    }
+
+    public void setApproxTotalSize(long size) {
+        this.approxTotalSize = size;
     }
 
     public String getUrl() {
@@ -89,5 +101,29 @@ public class M3U8Task {
     public String getFormatCurrentSize() {
         if (m3U8 == null)return "";
         return M3U8Util.formatFileSize((long)(progress * m3U8.getTotalFileSize()));
+    }
+
+    public boolean isApproxSet() {
+        return isApproxSet;
+    }
+
+    public void setApproxSet(boolean approxSet) {
+        isApproxSet = approxSet;
+    }
+
+    public int getChunksCount() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    public long getTotalChunksSize() {
+        return meanChunkSize;
+    }
+
+    public void setMeanChunkSize(long meanChunkSize) {
+        this.meanChunkSize = meanChunkSize;
     }
 }
