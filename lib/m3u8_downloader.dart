@@ -6,7 +6,7 @@ import 'package:flutter/services.dart';
 import 'callback_dispatcher.dart';
 
 typedef CallbackHandle? _GetCallbackHandle(Function callback);
-typedef SelectNotificationCallback = Future<dynamic> Function();
+typedef SelectNotificationCallback = Future<dynamic> Function(dynamic);
 
 
 class M3u8Downloader {
@@ -38,7 +38,8 @@ class M3u8Downloader {
           if (_onSelectNotification == null) {
             return Future.value(false);
           }
-          return _onSelectNotification!();
+          
+          return _onSelectNotification!(call.arguments);
         default:
           return Future.error('method not defined');
       }

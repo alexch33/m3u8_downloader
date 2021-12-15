@@ -25,7 +25,7 @@ class _MyAppState extends State<MyApp> {
   // 未加密的url地址（喜羊羊与灰太狼之决战次时代）
   String url1 = "https://cdn.605-zy.com/20210713/MiJecHrZ/index.m3u8";
   // 加密的url地址（火影忍者疾风传）
-  String url2 = "https://v3.dious.cc/20201116/SVGYv7Lo/index.m3u8";
+  String url2 = "https://hls.ted.com/project_masters/7386/index-f9-v1.m3u8?intro_master_id=7275";
 
   @override
   void initState() {
@@ -36,9 +36,9 @@ class _MyAppState extends State<MyApp> {
   void initAsync() async {
     String saveDir = await _findSavePath();
     M3u8Downloader.initialize(
-        onSelect: () async {
-          print('下载成功点击');
-          return null;
+        onSelect: (data) async {
+          print('下载成功点击 $data');
+          return data;
         }
     );
     M3u8Downloader.config(
