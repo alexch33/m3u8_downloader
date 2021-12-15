@@ -349,7 +349,10 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
   public boolean onNewIntent(Intent intent) {
     if (NotificationUtil.ACTION_SELECT_NOTIFICATION.equals(intent.getAction())) {
       M3U8Log.d("selectNotification");
-      channel.invokeMethod("selectNotification", null);
+      String filename = intent.getStringExtra(NotificationUtil.NOTIFICATION_FILENAME);
+      final Map<String, Object> args = new HashMap<>();
+      args.put("filename", filename);
+      channel.invokeMethod("selectNotification", args);
       if (mainActivity != null) {
         mainActivity.setIntent(intent);
       }

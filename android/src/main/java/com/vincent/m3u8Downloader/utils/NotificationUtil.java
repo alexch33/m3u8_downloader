@@ -22,6 +22,7 @@ public class NotificationUtil {
     public static final int NOTIFICATION_ID = 9527;
     public static final String NOTIFICATION_CHANNEL_ID = "M3U8_DOWNLOADER_NOTIFICATION";
     public static final String ACTION_SELECT_NOTIFICATION = "SELECT_NOTIFICATION";
+    public static final String NOTIFICATION_FILENAME = "NOTIFICATION_FILENAME";
 
     @SuppressLint("StaticFieldLeak")
     private static NotificationUtil instance;
@@ -112,6 +113,7 @@ public class NotificationUtil {
                 // 点击跳转
                 Intent intent = new Intent(context, getMainActivityClass(context));
                 intent.setAction(ACTION_SELECT_NOTIFICATION);
+                intent.putExtra(NOTIFICATION_FILENAME, fileName);
                 PendingIntent pendingIntent = PendingIntent.getActivity(context, NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
                 builder.setContentIntent(pendingIntent);
 
