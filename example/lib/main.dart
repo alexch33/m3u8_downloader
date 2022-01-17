@@ -138,7 +138,7 @@ class _MyAppState extends State<MyApp> {
                       });
                       M3u8Downloader.download(
                           url: url1,
-                          name: "下载未加密m3u8",
+                          name: "convertedM3u8",
                           progressCallback: progressCallback,
                           successCallback: successCallback,
                           errorCallback: errorCallback
@@ -168,7 +168,7 @@ class _MyAppState extends State<MyApp> {
                     });
                     M3u8Downloader.download(
                         url: url2,
-                        name: "下载已加密m3u8",
+                        name: "name2m3u8",
                         progressCallback: progressCallback,
                         successCallback: successCallback,
                         errorCallback: errorCallback

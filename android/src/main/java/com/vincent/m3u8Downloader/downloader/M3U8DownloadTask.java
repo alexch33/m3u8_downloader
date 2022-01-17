@@ -28,6 +28,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicInteger;
+import com.vincent.m3u8Downloader.utils.M3U8Log;
 
 /**
  * @Author: Vincent
@@ -47,6 +48,8 @@ public class M3U8DownloadTask {
 
     // 文件保存地址
     private String saveDir;
+    // filename for renaming converted to mp4 file
+    private String filename;
     // 当前M3U8
     private M3U8 currentM3U8;
     // 线程池
@@ -68,6 +71,10 @@ public class M3U8DownloadTask {
     int connTimeout;
     int readTimeout;
     int threadCount;
+
+    public void setFilename(String filename) {
+        this.filename = filename;
+    }
 
     private final WeakHandler mHandler = new WeakHandler(new Handler.Callback() {
         @Override
@@ -97,7 +104,7 @@ public class M3U8DownloadTask {
         }
     });
 
-    public M3U8DownloadTask() {
+    public M3U8DownloadTask() {        
         connTimeout = M3U8DownloadConfig.getConnTimeout();
         readTimeout = M3U8DownloadConfig.getReadTimeout();
         threadCount = M3U8DownloadConfig.getThreadCount();
@@ -324,7 +331,7 @@ public class M3U8DownloadTask {
             });
         }
     }
-
+    
     /**
      * M3U8转MP4
      */
@@ -334,7 +341,14 @@ public class M3U8DownloadTask {
 
         FileOutputStream fos = null;
         InputStream inputStream = null;
-        String mp4FilePath = saveDir + ".mp4";
+
+        String mp4FilePath;
+        if (filename != null) {
+            mp4FilePath = dir.getParent() + "/" + filename + ".mp4";
+        } else {
+            mp4FilePath = saveDir + ".mp4";    
+        }
+
         File mp4File = null;
         int len;
         try {

@@ -19,7 +19,7 @@ import java.io.File;
  */
 public class M3U8Downloader {
     private static M3U8Downloader instance;
-
+    
     private final M3U8DownloadTask m3U8DownLoadTask;
     private M3U8Task currentM3U8Task;
     private OnM3U8DownloadListener onM3U8DownloadListener;
@@ -27,6 +27,12 @@ public class M3U8Downloader {
 
     private M3U8Downloader() {
         m3U8DownLoadTask = new M3U8DownloadTask();
+    }
+    
+    public M3U8Downloader setFilename(String filename) {
+        this.m3U8DownLoadTask.setFilename(filename);
+
+        return this;
     }
 
     public static M3U8Downloader getInstance(){
