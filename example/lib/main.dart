@@ -82,6 +82,7 @@ class _MyAppState extends State<MyApp> {
     return saveDir;
   }
 
+  @pragma('vm:entry-point')
   static progressCallback(dynamic args) {
     final SendPort? send = IsolateNameServer.lookupPortByName('downloader_send_port');
     if (send != null) {
@@ -89,6 +90,8 @@ class _MyAppState extends State<MyApp> {
       send.send(args);
     }
   }
+
+  @pragma('vm:entry-point')
   static successCallback(dynamic args) {
     final SendPort? send = IsolateNameServer.lookupPortByName('downloader_send_port');
     if (send != null) {
@@ -100,6 +103,8 @@ class _MyAppState extends State<MyApp> {
       });
     }
   }
+
+  @pragma('vm:entry-point')
   static errorCallback(dynamic args) {
     final SendPort? send = IsolateNameServer.lookupPortByName('downloader_send_port');
     if (send != null) {
