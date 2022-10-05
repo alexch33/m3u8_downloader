@@ -163,9 +163,9 @@ public class M3U8DownloaderPlugin implements FlutterPlugin, MethodCallHandler, P
         if (showNotification) {
           NotificationUtil.getInstance().build(context);
         }
-        progressCallbackHandle = call.hasArgument("progressCallback") && call.argument("progressCallback") != JSONObject.NULL ? (long)call.argument("progressCallback") : -1;
-        successCallbackHandle = call.hasArgument("successCallback") && call.argument("successCallback") != JSONObject.NULL ? (long)call.argument("successCallback") : -1;
-        errorCallbackHandle = call.hasArgument("errorCallback") && call.argument("errorCallback") != JSONObject.NULL ? (long)call.argument("errorCallback") : -1;
+        progressCallbackHandle = (call.hasArgument("progressCallback") && call.argument("progressCallback") != JSONObject.NULL ? (Number)call.argument("progressCallback") : -1).longValue();
+        successCallbackHandle = (call.hasArgument("successCallback") && call.argument("successCallback") != JSONObject.NULL ? (Number)call.argument("successCallback") : -1).longValue();
+        errorCallbackHandle = (call.hasArgument("errorCallback") && call.argument("errorCallback") != JSONObject.NULL ? (Number)call.argument("errorCallback") : -1).longValue();
 
         M3U8Downloader.getInstance().setFilename(fileName).download(url);
         M3U8Downloader.getInstance().setOnM3U8DownloadListener(mDownloadListener);
