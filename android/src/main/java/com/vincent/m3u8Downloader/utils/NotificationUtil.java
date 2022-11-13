@@ -31,7 +31,7 @@ public class NotificationUtil {
     private Context context;
     private int notificationProgress = -100;
 
-    public static NotificationUtil getInstance(){
+    public static NotificationUtil getInstance() {
         if (null == instance) {
             instance = new NotificationUtil();
         }
@@ -40,6 +40,7 @@ public class NotificationUtil {
 
     /**
      * 构建通知
+     *
      * @param c 上下文
      */
     public void build(Context c) {
@@ -74,7 +75,8 @@ public class NotificationUtil {
 
     /**
      * 更新通知
-     * @param state 下载状态
+     *
+     * @param state    下载状态
      * @param progress 下载进度
      */
     public void updateNotification(String fileName, M3U8TaskState state, int progress) {
@@ -114,7 +116,16 @@ public class NotificationUtil {
                 Intent intent = new Intent(context, getMainActivityClass(context));
                 intent.setAction(ACTION_SELECT_NOTIFICATION);
                 intent.putExtra(NOTIFICATION_FILENAME, fileName);
-                PendingIntent pendingIntent = PendingIntent.getActivity(context, NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+                PendingIntent pendingIntent = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                    pendingIntent = PendingIntent.getActivity
+                            (context, NOTIFICATION_ID, intent, PendingIntent.FLAG_IMMUTABLE);
+                } else {
+                    pendingIntent = PendingIntent.getActivity
+                            (context, NOTIFICATION_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+                }
+
                 builder.setContentIntent(pendingIntent);
 
                 builder.setContentText(M3U8DownloadConfig.getSuccessText()).setProgress(0, 0, false);

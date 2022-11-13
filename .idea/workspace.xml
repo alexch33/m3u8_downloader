@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc4bb8a1-04ea-4593-8779-b0a910b6f6e8" name="Default Changelist" comment="">
+    <list default="true" id="cc4bb8a1-04ea-4593-8779-b0a910b6f6e8" name="Default Changelist" comment="fix: 修改pub">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/vincent/m3u8Downloader/downloader/M3U8DownloadTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/vincent/m3u8Downloader/downloader/M3U8DownloadTask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/vincent/m3u8Downloader/utils/M3U8Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/vincent/m3u8Downloader/utils/M3U8Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/vincent/m3u8Downloader/utils/NotificationUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/vincent/m3u8Downloader/utils/NotificationUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/m3u8_downloader.iml" beforeDir="false" afterPath="$PROJECT_DIR$/m3u8_downloader.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +18,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="1xD9jGU1jukzaJwLjqYAVlE8181" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,8 +29,11 @@
   <component name="PropertiesComponent">
     <property name="ASKED_MARK_IGNORED_FILES_AS_EXCLUDED" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="android.sdk.path" value="$PROJECT_DIR$/../../Program Files/Android/sdk" />
+    <property name="android.sdk.path" value="$USER_HOME$/Program Files/Android/sdk" />
+    <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -78,6 +83,17 @@
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refactor: 重构整体代码" />
